@@ -4,13 +4,13 @@ namespace DatabaseConnection
 {
     abstract class DbConnection
     {
-        public string ConnectionString { get; set; }
+        private string _connectionString;
         protected TimeSpan Timeout { get; set; }
 
         public DbConnection(string connectionString)
         {
             if(connectionString == null) throw new NullReferenceException("Connection string cannot be null");
-            ConnectionString = connectionString;
+            _connectionString = connectionString;
         }
 
         public abstract void OpenConnection();
